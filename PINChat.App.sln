@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PINChat.App.Maui", "PINChat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PINChat.App.Blazor", "PINChat.App.Blazor\PINChat.App.Blazor.csproj", "{E906BC8B-8E5B-4F75-A6D8-BCB56525919A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PINChat.App.Library", "PINChat.App.Library\PINChat.App.Library.csproj", "{8265F7DB-21FD-406F-95BA-F23BDB96AF95}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +63,10 @@ Global
 		{E906BC8B-8E5B-4F75-A6D8-BCB56525919A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E906BC8B-8E5B-4F75-A6D8-BCB56525919A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E906BC8B-8E5B-4F75-A6D8-BCB56525919A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8265F7DB-21FD-406F-95BA-F23BDB96AF95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8265F7DB-21FD-406F-95BA-F23BDB96AF95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8265F7DB-21FD-406F-95BA-F23BDB96AF95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8265F7DB-21FD-406F-95BA-F23BDB96AF95}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -73,6 +79,7 @@ Global
 		{3E150C62-0D0F-41BD-AAE9-A4DE4ABFE7F4} = {4F912CB5-8945-4F31-858D-8822C8222B10}
 		{CB368AA4-2988-4FDA-AA9B-C98A70781849} = {541DD147-AB42-46F7-A2B1-7ACA38B6211A}
 		{E906BC8B-8E5B-4F75-A6D8-BCB56525919A} = {B33DC464-50CA-4DE6-B4EC-32CB625CBF86}
+		{8265F7DB-21FD-406F-95BA-F23BDB96AF95} = {1C2A543E-79F8-4E33-92CE-1FEB6439D1B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AA1D9489-9D17-45C8-BE85-A1AF3DE8CBB9}
