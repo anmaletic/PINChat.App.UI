@@ -1,0 +1,66 @@
+﻿
+<div class="view-wrapper">
+    <div class="chat-view">
+        
+        <div class="chat-header">
+            <div class="chat-header-content">
+
+                <div class="chat-header-left">
+                    <img class="header-item avatar-large" src="@LoggedInUser.AvatarPath" alt="User Avatar" @onclick='() => ShowDetails("User")'>
+                    <img class="header-item avatar-small" src="resources/images/Contacts.png" alt="Contact image" @onclick='() => SelectHeaderItem("Contacts")'>
+                    <img class="header-item avatar-small" src="resources/images/Groups.png" alt="Group image" @onclick='() => SelectHeaderItem("Groups")'>
+                </div>
+
+
+                <div class="chat-header-center">
+                    @if (SelectedHeaderItem != "Messages")
+                    {
+                        <div>@SelectedHeaderItem</div>
+                    }
+                    else if (!string.IsNullOrEmpty(Recipient.Id))
+                    {
+                        <div>
+                            <img class="avatar-large" src="@Recipient.AvatarPath" alt="Recipient Avatar" @onclick='() => ShowDetails("Recipient")' style="cursor: pointer"/>
+                        </div>
+                        <div>@Recipient.Name</div>
+                    }
+                </div>
+
+                
+                <div class="chat-header-right">
+                    @if (ChatService.IsConnected)
+                    {
+                        <img class="avatar-small" src="resources/images/Connected.png" alt="img" title="Connection state: Connected"/>
+                    }
+                    else
+                    {
+                        <img class="avatar-small" src="resources/images/Disconnected.png" alt="img" title="Connection state: Disconnected"/>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <main class="chat-content">
+            
+            @switch (SelectedHeaderItem)
+            {
+                case "Contacts":
+                    <Settings Caller="Contacts"/>
+                    break;
+                case "Groups":
+                    <Settings Caller="Groups"/>
+                    break;
+                case "Messages":
+                    <Messages/>
+                    break;
+            }
+        </main>
+        
+        @if (IsModalVisible)
+        {
+            <UserDetails Recipient="UserTarget" IsReadOnly="IsReadOnly" OnClosed="OnProfileClosed" OnAccept="OnUpdate"/>
+        }
+    
+    </div>
+</div>
+
