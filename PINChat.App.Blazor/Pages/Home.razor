@@ -1,7 +1,23 @@
 ﻿@page "/"
 
-<PageTitle>Home</PageTitle>
+@if(string.IsNullOrEmpty(LoggedInUser.Id))
+{
+    <Login OnUserAuthenticated="OnUserAuthenticated"/>
+}
+else
+{
+    <Chat />
+}
 
-<h1>Hello, world!</h1>
 
-Welcome to your new app.
+@code {
+    [Inject] private ILoggedInUserModel LoggedInUser { get; set; } = null!;
+    
+    private bool IsLoggedIn { get; set; }
+
+    private void OnUserAuthenticated(bool obj)
+    {
+        IsLoggedIn = true;
+    }
+
+}
