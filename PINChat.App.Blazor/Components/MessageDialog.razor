@@ -1,0 +1,31 @@
+﻿
+<div class="custom-modal-dialog">
+    <div class="dialog-container">
+        <div class="dialog-title">
+            <h4>@Title</h4>
+        </div>
+        <div class="dialog-message">
+            @Message        
+        </div>
+        
+        <div class="dialog-button">
+            <button type="button" class="btn-accent" @onclick="OnButtonClick">OK</button>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+    
+    [Parameter]
+    public string? Message { get; set; }
+    
+    [Parameter]
+    public EventCallback OnButtonClicked { get; set; }
+
+    private async Task OnButtonClick()
+    {
+        await OnButtonClicked.InvokeAsync(null);
+    }
+}
