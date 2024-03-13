@@ -1,0 +1,55 @@
+﻿
+<div class="details-dialog">
+    <div class="details-container">
+        <div class="details-header">
+            <label class="details-title">Profile</label>
+            <button class="details-button" @onclick="Close">x</button>
+        </div>
+
+        <InputFile id="fileInput" accept=".jpg, .jpeg, .png" OnChange="HandleFileChange" style="display: none"/>
+
+        <EditForm Model="TempUser" OnValidSubmit="UpdateUser">
+            <div class="@($"{(IsReadOnly ? "readonly-cursor details-img" : "details-img")}")">
+                <img class="avatar-xlarge" id="avatarImg" src="data:image;base64,@Convert.ToBase64String(TempUser.Avatar!)" alt="avatar" @onclick="OpenFileDialog"/>
+            </div>
+
+            <div>
+                <label for="displayName">Nadimak:</label>
+                <InputText id="displayName" class="@($"{(IsReadOnly ? "readonly-cursor form-control details-item" : "form-control details-item")}")" @bind-Value="TempUser.DisplayName" readonly="@IsReadOnly"/>
+                <ValidationMessage For="() => TempUser.DisplayName"/>
+            </div>
+
+            <div>
+                <label for="firstName">Ime:</label>
+                <InputText id="firstName" class="@($"{(IsReadOnly ? "readonly-cursor form-control details-item" : "form-control details-item")}")" @bind-Value="TempUser.FirstName" readonly="@IsReadOnly"/>
+                <ValidationMessage For="() => TempUser.FirstName"/>
+            </div>
+
+            <div>
+                <label for="lastName">Prezime:</label>
+                <InputText id="lastName" class="@($"{(IsReadOnly ? "readonly-cursor form-control details-item" : "form-control details-item")}")" @bind-Value="TempUser.LastName" readonly="@IsReadOnly"/>
+                <ValidationMessage For="() => TempUser.LastName"/>
+            </div>
+
+            @if (!IsReadOnly)
+            {
+                <div>
+                    <button type="submit" class="btn-accent" style="height: 36px; margin: 20px 0 0 0;">Spremi</button>
+                </div>
+            }
+        </EditForm>
+        
+        @if (IsLoading)
+        {
+            <div style="margin: 20px 0 20px 0">
+                <Loading />
+            </div>
+        }
+    </div>
+    
+    @if (IsMessageVisible)
+    {
+        <MessageDialog Title="Upozorenje" Message="@DialogMessage" OnButtonClicked="OnMessageDialogClosed"/>
+    }
+    
+</div>
