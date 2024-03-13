@@ -1,6 +1,37 @@
-﻿namespace PINChat.App.Library.Models;
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-public class TargetModel
+namespace PINChat.App.Library.Models;
+
+public class TargetModel : IRecipientModel
 {
-    public string? Id { get; set; }
+    private string? _id;
+
+    public string? Id
+    {
+        get => _id;
+        set
+        {
+            _id = value;
+            NotifyPropertyChanged();
+        }
+    }
+    
+    public virtual string? AvatarPath { get; set; }
+    public virtual string? Name { get; set; }
+    public virtual string? Type { get; set; }
+
+    public void Reset()
+    {
+        Id = "";
+        AvatarPath = "";
+        Name = "";
+    }
+    
+    public event EventHandler? PropertyChanged;
+    protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+    
 }
