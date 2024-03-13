@@ -1,0 +1,32 @@
+﻿@using System.Reflection.Metadata
+
+<div class="recipients-view">
+
+    @if (Caller is "Contacts" or "Messages")
+    {
+        <p class="recipients-header">Contacts</p>
+        @foreach (var contact in LoggedInUser.Contacts)
+        {
+            <li class="@ContactIsSelected(contact.Id!)" @onclick="() => SelectRecipient(contact)" @onclick:preventDefault @onclick:stopPropagation disabled="@IsUpdatingRecipient">
+                <div class="sidebar-item">
+                    <img class="avatar-small" src="@contact.AvatarPath" alt="img"/>
+                    <div class="name">@contact.FullName</div> 
+                </div>
+            </li>
+        }
+    }
+    
+    @if (Caller is "Groups" or "Messages")
+    {
+        <p class="recipients-header">Groups</p>
+        @foreach (var group in LoggedInUser.Groups)
+        {
+            <li class="@ContactIsSelected(group.Id!)" @onclick="() => SelectRecipient(group)">
+                <div class="sidebar-item">
+                    <img class="avatar-small" src="@group.AvatarPath" alt="img"/>
+                    <div class="name">@group.Name</div> 
+                </div>
+            </li>
+        }
+    }
+</div>
