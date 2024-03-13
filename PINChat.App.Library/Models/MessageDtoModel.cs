@@ -1,6 +1,6 @@
 ﻿namespace PINChat.App.Library.Models;
 
-public class MessageDbModel
+public class MessageDtoModel
 {
     public DateTime CreatedDate { get; set; }
     public string? TargetId { get; set; }

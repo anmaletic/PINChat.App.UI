@@ -32,7 +32,7 @@ public class MessageEndpoint : IMessageEndpoint
         return result;
     }
     
-    public async Task<string> CreateNew(MessageDbModel model)
+    public async Task<string> CreateNew(MessageDtoModel model)
     {
         using var response = await _apiHelper.ApiClient.PostAsJsonAsync("/api/Message/Insert", model);
         
