@@ -11,4 +11,5 @@ public interface IUserEndpoint
     Task<string> RemoveContact(string userId, string contactId);
     Task<string> AddGroup(string userId, string groupId);
     Task<string> RemoveGroup(string userId, string groupId);
+    Task<string> UpdateUser(UserModel user);
 }

@@ -51,6 +51,7 @@ public class UserEndpoint : IUserEndpoint
             _loggedInUser.FirstName = result.FirstName;
             _loggedInUser.LastName = result.LastName;
             _loggedInUser.Avatar = result.Avatar;
+            _loggedInUser.AvatarPath = result.AvatarPath;
             _loggedInUser.Contacts = result.Contacts;
             _loggedInUser.Groups = result.Groups;
 
@@ -134,5 +135,17 @@ public class UserEndpoint : IUserEndpoint
         
         var result = await response.Content.ReadAsStringAsync();
         return result;
+    }
+    
+    public async Task<string> UpdateUser(UserModel user)
+    {
+        using var response = await _apiHelper.ApiClient.PostAsJsonAsync("/api/User/Update", user);
+        
+        if (!response.IsSuccessStatusCode) throw new Exception(response.ReasonPhrase);
+        
+        var result = await response.Content.ReadAsStringAsync();
+
+        return result;
+
     }
 }
