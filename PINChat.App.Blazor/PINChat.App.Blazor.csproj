@@ -10,12 +10,20 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="8.0.2"/>
         <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="8.0.2" PrivateAssets="all"/>
+        <PackageReference Include="SixLabors.Fonts" Version="2.0.2" />
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.3" />
+        <PackageReference Include="SkiaSharp" Version="2.88.7" />
+        <PackageReference Include="SkiaSharp.Views.Blazor" Version="2.88.7" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="..\.dockerignore">
         <Link>.dockerignore</Link>
       </Content>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\PINChat.App.Library\PINChat.App.Library.csproj" />
     </ItemGroup>
 
 </Project>
