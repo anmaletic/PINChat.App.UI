@@ -49,6 +49,7 @@ public partial class Messages
             MessageList.Add(msg);
 
             await ScrollToBottomAuto();
+            StateHasChanged();
         }
     }
     private async Task OnRecipientSelected(TargetModel target)
