@@ -46,7 +46,7 @@
 
             <div class="messages-input">
                 <textarea id="inputBox" placeholder="Nova poruka" @bind="MessageContent" @oninput="OnInputBoxChange" @onkeydown="HandleKeyDown" @onkeydown:preventDefault="PreventDefault"></textarea>
-                <button  class="btn-accent">Pošalji</button>
+                <button  class="btn-accent" @onclick="SendMessage">Pošalji</button>
 
             </div>
             
