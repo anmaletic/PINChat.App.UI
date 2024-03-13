@@ -1,0 +1,36 @@
+﻿
+<div class="component-wrapper">
+    <div class="side-wrapper">
+        <Recipients Caller="@Caller" OnRecipientSelected="RemoveRecipient" />
+    </div>
+    
+    <div class="recipients-data">
+        
+        @if (IsLoading)
+        {
+            <Loading />
+        }
+        else
+        {
+            <div class="filter-row">
+                <div class="filter-wrapper">
+                    <input placeholder="Filter recipients.." @oninput="OnFilterValueChange"/>
+                </div>
+            </div>
+        
+            <div class="new-data">
+                <ul class="horizontal-list">
+
+                    @foreach (var item in RecipientList)
+                    {
+                        <li class="new-item-container" @onclick="() => AddRecipient(item)" disabled="@IsUpdatingRecipient">
+                            <img class="avatar-small" src="@item.AvatarPath" alt="avatar"/>
+                            <div class="name">@item.Name</div>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        }
+    </div>
+</div>
