@@ -1,0 +1,39 @@
+﻿
+<div class="view-wrapper">
+    <div class="login-view">
+        <div class="login-data">
+            <div></div>
+            
+            @* Logo image *@
+            <div style="display: grid">
+                <img style="justify-self: center" src="resources/images/Logo.svg" alt="Logo" width="90%">
+            </div>
+        
+            @if (IsRegistering)
+            {
+                <SignUp OnLoading="SetLoadingState" />
+                
+                <p style="text-align: center">
+                    <a href="" @onclick='() => SetUserState("l")' @onclick:preventDefault >Povratak na prijavu</a>.
+                </p>    
+            }
+            else
+            {
+                <SignIn OnLogin="LogInCallback" OnLoading="SetLoadingState" />
+                
+                <p style="text-align: center">
+                    Ukoliko nemate korisnički račun,
+                    <a href="" @onclick='() => SetUserState("r")' @onclick:preventDefault >registrirajte se</a>.
+                </p>
+            }
+        
+            <div>        
+                @if (IsLoading)                
+                {
+                    <Loading />
+                }
+            </div>
+        </div>
+    </div>
+                
+</div>

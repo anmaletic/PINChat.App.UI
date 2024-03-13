@@ -1,0 +1,31 @@
+﻿@using PINChat.App.Blazor.Models
+
+<div>
+    <EditForm Model="_registrationModel" OnValidSubmit="RegisterUser">
+        <DataAnnotationsValidator />
+        <div class="editForm-s">
+            <p class="editForm-h">Lozinka mora sadržavati:</p>
+            <p class="editForm-p">* Minimalno 6 znakova</p>
+            <p class="editForm-p">* Velika i mala slova engleske abecede</p>
+            <p class="editForm-p">* Specijalne znakove</p>
+        </div>
+        <div>
+            <label  for="userName">Korisničko ime:</label>
+            <InputText id="userName" class="form-control"  @bind-Value="_registrationModel.UserName"/>
+            <ValidationMessage For="() => _registrationModel.UserName" />
+        </div>
+        <div>
+            <label for="password" class="mt-2">Lozinka:</label>
+            <InputText id="password" type="password" class="form-control" @bind-Value="_registrationModel.Password"/>
+            <ValidationMessage For="() => _registrationModel.Password" />
+        </div>
+        <div>
+            <label for="password" class="mt-2">Potvrda lozinke:</label>
+            <InputText id="confirmPassword" type="password" class="form-control" @bind-Value="_registrationModel.ConfirmPassword"/>
+            <ValidationMessage For="() => _registrationModel.ConfirmPassword" />
+        </div>                        
+        <div>
+            <button type="submit" class="btn-accent mt-4">Registracija</button>
+        </div>           
+    </EditForm>
+</div>

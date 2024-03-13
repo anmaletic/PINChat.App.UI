@@ -1,0 +1,23 @@
+﻿@using PINChat.App.Blazor.Models
+
+@using SkiaSharp
+@using System.Buffers.Text
+@using System.Security.Cryptography
+
+<div>
+    <EditForm Model="_authModel" OnValidSubmit="LoginUser">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div>
+            <label for="userName">Korisničko ime:</label>
+            <InputText id="userName" class="form-control" @bind-Value="_authModel.UserName"/>
+        </div>
+        <div>
+            <label for="password" class="mt-2">Lozinka:</label>
+            <InputText id="password" type="password" class="form-control" @bind-Value="_authModel.Password"/>
+        </div>
+        <div>
+            <button type="submit" class="btn-accent mt-4">Prijava</button>
+        </div>
+    </EditForm>
+</div>
