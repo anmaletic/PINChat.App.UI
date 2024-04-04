@@ -21,6 +21,15 @@ public partial class Chat
     
     protected override async Task OnInitializedAsync()
     {
+        if (LoggedInUser.AvatarPath == null)
+        {
+
+            LoggedInUser.AvatarPath = $"https://pinchat-api.anmal.dev/api/Image/GetUserImage/{LoggedInUser.Id}";
+            await UserEndpoint.UpdateUser((LoggedInUser as UserModel)!);
+            
+            OnUpdate();
+        }
+        
         Recipient.PropertyChanged += async (sender, args) => await InvokeAsync(StateHasChanged);
         await SetupChatHub();
     }
