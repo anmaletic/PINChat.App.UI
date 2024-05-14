@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.JSInterop;
+using PINChat.App.Blazor.Authentication;
 using PINChat.App.Library.Api;
 using PINChat.App.Library.Models;
 using SixLabors.ImageSharp;
@@ -20,6 +22,7 @@ public partial class UserDetails
     [Inject] public required IJSRuntime JsRuntime { get; set; }
     [Inject] public required ILoggedInUserModel LoggedInUser { get; set; }
     [Inject] public required IUserEndpoint UserEndpoint { get; set; }
+    [Inject] public required IAuthenticationService AuthService { get; set; }
     
     public required UserModel TempUser { get; set; }
     
@@ -112,7 +115,13 @@ public partial class UserDetails
                 IsLoading = false;
             }
         }
-    } 
+    }
+
+    private async Task LogoutUser()
+    {
+        await AuthService.Logout();
+    }
+    
     private void Close()
     {
         OnClosed.InvokeAsync();

@@ -12,4 +12,5 @@ public interface IUserEndpoint
     Task<string> AddGroup(string userId, string groupId);
     Task<string> RemoveGroup(string userId, string groupId);
     Task<string> UpdateUser(UserModel user);
+    void LogOffUser();
 }

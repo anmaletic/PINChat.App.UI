@@ -11,7 +11,9 @@ else
 
 
 @code {
+    
     [Inject] private ILoggedInUserModel LoggedInUser { get; set; } = null!;
+    [CascadingParameter] public required Task<AuthenticationState> AuthState { get; set; }
     
     private bool IsLoggedIn { get; set; }
 
@@ -19,5 +21,4 @@ else
     {
         IsLoggedIn = true;
     }
-
 }

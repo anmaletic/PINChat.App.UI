@@ -13,4 +13,5 @@ public interface ILoggedInUserModel
     public ObservableCollection<UserModel> Contacts { get; set; }
     public ObservableCollection<GroupModel> Groups { get; set; }
     string FullName { get; }
+    void ResetUserModel();
 }

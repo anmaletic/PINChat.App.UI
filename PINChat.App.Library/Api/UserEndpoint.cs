@@ -148,4 +148,10 @@ public class UserEndpoint : IUserEndpoint
         return result;
 
     }
+
+    public void LogOffUser()
+    {
+        _apiHelper.ApiClient.DefaultRequestHeaders.Clear();
+        _loggedInUser.ResetUserModel();
+    }
 }
