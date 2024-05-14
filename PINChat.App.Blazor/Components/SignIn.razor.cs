@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components;
+using PINChat.App.Blazor.Authentication;
 using PINChat.App.Blazor.Models;
 using PINChat.App.Library.Api;
-using PINChat.App.Library.Models;
 
 namespace PINChat.App.Blazor.Components;
 
@@ -11,6 +11,7 @@ public partial class SignIn
     [Parameter] public EventCallback<bool> OnLoading { get; set; }
     
     [Inject] private IUserEndpoint UserEndpoint { get; set; } = null!;
+    [Inject] private IAuthenticationService AuthService { get; set; } = null!;
 
     private AuthenticationUserModel _authModel = new();
 
@@ -24,9 +25,8 @@ public partial class SignIn
             Message = "";
             IsMessageVisible = false;
             await OnLoading.InvokeAsync(true);
-
-            var result = await UserEndpoint.Authenticate(_authModel.UserName!, _authModel.Password!);
-            await UserEndpoint.GetLoggedInUserInfo(result.Access_Token!);
+            
+            await AuthService.Login(_authModel);
             
             await OnLogin.InvokeAsync();
         }
